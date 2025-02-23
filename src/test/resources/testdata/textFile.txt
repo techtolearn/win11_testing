@@ -1,0 +1,1 @@
+This is program to write a text into the text files
