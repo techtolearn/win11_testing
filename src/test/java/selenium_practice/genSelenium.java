@@ -84,6 +84,10 @@ public class genSelenium {
         List<WebElement> elements = driver.findElements(By.xpath("//div[@tagname= '']"));
            for(WebElement el : elements)
                System.out.println(el.getText());
+
+         JavascriptExecutor js = (JavascriptExecutor) driver;
+         js.executeScript("argument[0].click()",elements);
+
         String file1 = getScreenShot(driver, "Test1");
         String file2 = getScreenShot(element,"Test2");
     }
