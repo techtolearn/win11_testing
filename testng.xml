@@ -1,0 +1,61 @@
+<!--
+✅ <suite> — Defines the test suite and enables parallel execution with parallel="methods" for faster results.
+✅ <test> — Each test block handles different scenarios like Smoke, Regression, Sanity, etc.
+✅ <groups> — Efficiently organizes tests with categories like Smoke, Regression, and Sanity.
+✅ <parameter> — Provides parameterized test execution for dynamic data input.
+ ✅ parallel="methods" with thread-count="3" — Runs multiple test methods concurrently, boosting
+ -->
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Comprehensive Test Suite" parallel="methods" thread-count="3">
+
+    <!-- Suite-wide Parameters (Optional) -->
+    <parameter name="username" value="admin"/>
+    <parameter name="password" value="admin123"/>
+
+    <!-- Smoke Tests -->
+    <test name="Smoke Test Suite">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestNGAdvancedDemo"/>
+        </classes>
+    </test>
+
+    <!-- Regression Tests -->
+    <test name="Regression Test Suite">
+        <groups>
+            <run>
+                <include name="Regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestNGAdvancedDemo"/>
+        </classes>
+    </test>
+
+    <!-- Sanity Tests (Disabled Tests Included) -->
+    <test name="Sanity Test Suite">
+        <groups>
+            <run>
+                <include name="Sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestNGAdvancedDemo"/>
+        </classes>
+    </test>
+
+    <!-- Parameterized Test Suite -->
+    <test name="Parameterized Test Suite">
+        <parameter name="username" value="admin"/>
+        <parameter name="password" value="admin123"/>
+        <classes>
+            <class name="TestNGAdvancedDemo"/>
+        </classes>
+    </test>
+
+</suite>
