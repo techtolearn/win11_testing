@@ -45,6 +45,7 @@
     </repository>
   </repositories>
 
+
   <dependencies>
     <!-- JUnit for testing -->
     <dependency>
@@ -52,6 +53,30 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>7.16.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.16.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>7.20.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>testng-xml-formatter</artifactId>
+      <version>0.2.0</version>
     </dependency>
 
     <!-- Selenium for browser automation -->
