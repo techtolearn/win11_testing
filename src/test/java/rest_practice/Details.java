@@ -1,31 +1,27 @@
 package rest_practice;
 
 public class Details {
-
-    private String Company;
-    private String Location;
-
-    public Details(String Company, String location){
-        this.Company = Company;
-        Location = location;
+    public Details(String companyName, String location) {
+        this.companyName = companyName;
+        this.location = location;
     }
 
-    public String getCompany() {
-        return Company;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompany(String company) {
-        Company = company;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
     }
 
-
-
+    private String companyName;
+    private String location;
 }

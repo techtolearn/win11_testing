@@ -3,38 +3,20 @@ package rest_practice;
 import java.util.List;
 
 public class Employee {
-    private String Name;
-
-    private String Job;
-
-    private List<Email> email;
-
-    private String[] Skills;
-
-    private Details details;
-
-    public Employee(String name, String job, List<Email> email, String[] skills, Details details) {
-        Name = name;
-        Job = job;
-        this.email = email;
-        Skills = skills;
-        this.details = details;
-    }
-
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getJob() {
-        return Job;
+        return job;
     }
 
     public void setJob(String job) {
-        Job = job;
+        this.job = job;
     }
 
     public List<Email> getEmail() {
@@ -46,11 +28,11 @@ public class Employee {
     }
 
     public String[] getSkills() {
-        return Skills;
+        return skills;
     }
 
     public void setSkills(String[] skills) {
-        Skills = skills;
+        this.skills = skills;
     }
 
     public Details getDetails() {
@@ -61,6 +43,20 @@ public class Employee {
         this.details = details;
     }
 
+    private String name;
+    private String job;
+    private List<Email> email;
+    private String[] skills;
+    private Details details;
+
+    public Employee(String name, String job, List<Email> email, String[] skills, Details details) {
+        this.name = name;
+        this.job = job;
+        this.email = email;
+        this.skills = skills;
+        this.details = details;
+    }
+
+
+
 }
-
-
