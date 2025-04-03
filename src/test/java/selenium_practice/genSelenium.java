@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,9 +20,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.List;
+import java.util.function.Function;
 
 public class genSelenium {
     public static void main(String[] args) throws AWTException, IOException {
@@ -42,17 +43,24 @@ public class genSelenium {
         driver.close();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("testing")));
 
+
+        FluentWait<WebDriver> wait1 = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30)) // Maximum wait time
+                .pollingEvery(Duration.ofSeconds(5)) // Check every 5 seconds
+                .ignoring(NoSuchElementException.class); // Ignore specific exception
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("ddgsad")));
+
+
+
         String parent = driver.getWindowHandle();
-        Set<String> set = driver.getWindowHandles();
-        Iterator<String> itr  = set.iterator();
-        while(itr.hasNext()){
-            String child = itr.next();
-            driver.switchTo().window(child).getCurrentUrl();
-            driver.close();
-        }
+        Set<String> windows = driver.getWindowHandles();
+        for (String window : windows)
+            driver.switchTo().window(window).close();
+
         driver.switchTo().window(parent).getTitle();
         driver.close();
 
@@ -109,5 +117,22 @@ public class genSelenium {
         File destn = new File(fileName);
         FileUtils.copyDirectory(src, destn);
         return fileName;
+    }
+
+    public static WebElement fluentWait(WebDriver driver, By locator, int timeout, int pollingTime) {
+        FluentWait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(timeout))
+                .pollingEvery(Duration.ofSeconds(pollingTime))
+                .ignoring(NoSuchElementException.class);
+
+        return wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement element = driver.findElement(locator);
+                if (element.isDisplayed()) {
+                    return element;
+                }
+                return null;
+            }
+        });
     }
 }

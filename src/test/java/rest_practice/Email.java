@@ -1,14 +1,9 @@
 package rest_practice;
 
 public class Email {
-
-    private String emailType;
-    private String emailValue;
-
-
-    public Email(String emailType, String emailValue) {
+    public Email(String emailType, String emailId) {
         this.emailType = emailType;
-        this.emailValue = emailValue;
+        this.emailId = emailId;
     }
 
     public String getEmailType() {
@@ -19,13 +14,15 @@ public class Email {
         this.emailType = emailType;
     }
 
-    public String getEmailValue() {
-        return emailValue;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setEmailValue(String emailValue) {
-        this.emailValue = emailValue;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
+    private String emailType;
+    private String emailId;
 
 }

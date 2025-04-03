@@ -17,7 +17,8 @@
     <test name="Smoke Test Suite">
         <groups>
             <run>
-                <include name="Smoke"/>
+                <include name="smoke"/>
+                <include name="regression"/>
             </run>
         </groups>
         <classes>
